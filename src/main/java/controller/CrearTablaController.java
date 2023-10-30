@@ -12,9 +12,10 @@ import model.CrearTablaModel;
  */
 public class CrearTablaController {
     CrearTablaModel crearTab= new CrearTablaModel();
-    
-    public void crearTabla(){
-        crearTab.creaTabla();
+    boolean dat;
+    public boolean crearTabla(){
+        dat=crearTab.creaTabla();
+        return dat;
     }
     
     

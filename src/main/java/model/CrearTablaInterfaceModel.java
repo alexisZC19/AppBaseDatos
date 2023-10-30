@@ -15,7 +15,7 @@ import java.sql.*;
  */
 public interface CrearTablaInterfaceModel {
     
-    public void creaTabla();
+    public boolean creaTabla();
     
     
 }

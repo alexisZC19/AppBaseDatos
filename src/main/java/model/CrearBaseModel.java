@@ -15,25 +15,45 @@ import java.sql.*;
  * @author zavaletaax
  */
 public class CrearBaseModel implements CrearBaseInterfaceModel{
+    Connection cn= null;
+    Statement s= null;
+    boolean baseExiste = false;
 
     @Override
-    public void CrearBase() {
+    public boolean CrearBase() {
         try {
             Class.forName("org.postgresql.Driver");
-            Connection cn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/prueba01", "postgres", "informatica");
-            Statement s = cn.createStatement();
-
-            String createBase = "Create database grupo506";
-            System.out.println(createBase);
-            int rs = s.executeUpdate(createBase);
-
+            cn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/prueba01", "postgres", "informatica");
+            s = cn.createStatement();
             
+            ResultSet ns = cn.getMetaData().getCatalogs();
             
-            
-
-        } catch (Exception e) {
-            e.getMessage();
+            String baseCrear = "grupo506";
+            while (ns.next()) {
+                String databaseName = ns.getString(1);
+                if (databaseName.equalsIgnoreCase(baseCrear)) {
+                    baseExiste = true;
+                    break;
+                }
+            }
+            if (!baseExiste) {
+                String createBase = "CREATE DATABASE " + baseCrear;
+                System.out.println(createBase);
+                int rs = s.executeUpdate(createBase);
+                System.out.println("La base de datos " + baseCrear+ " ha sido creada.");
+                
+            } else {
+                System.out.println("La base de datos " + baseCrear + " ya existe.");
+                
+            }
+       
+                   
+             cn.close();
+                
+            } catch (Exception e) {
+                e.getMessage();
         }
+        return baseExiste;
     }
     
 }

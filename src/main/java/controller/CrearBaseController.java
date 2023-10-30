@@ -12,9 +12,11 @@ import model.CrearBaseModel;
  */
 public class CrearBaseController {
     CrearBaseModel crearB = new CrearBaseModel();
+    boolean al;
     
-    public void CrearBase(){
-        crearB.CrearBase();
+    public boolean CrearBase(){
+       al= crearB.CrearBase();
+       return al; 
     }
     
 }

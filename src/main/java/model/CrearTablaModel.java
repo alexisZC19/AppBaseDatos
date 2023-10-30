@@ -14,21 +14,40 @@ import java.sql.*;
  * @author zavaletaax
  */
 public class CrearTablaModel implements CrearTablaInterfaceModel {
-
+    boolean val= false;
     @Override
-    public void creaTabla() {
-         try{
-            Class.forName("org.postgresql.Driver");
-            Connection cn= DriverManager.getConnection("jdbc:postgresql://localhost:5432/prueba01","postgres","informatica");
-            Statement s = cn.createStatement();
-       
-            String createTable= "Create table grupo506 ( id int primary key , nombre varchar(30) , matricula int, carrera varchar(25))";
+    public boolean creaTabla() {
+        try {
+        Class.forName("org.postgresql.Driver");
+        Connection cn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/prueba01", "postgres", "informatica");
+        Statement s = cn.createStatement();
+
+        // Nombre de la tabla que deseas verificar
+        String tablaDeseada = "grupo506";
+
+        // Consulta para verificar si la tabla ya existe
+        ResultSet rs = cn.getMetaData().getTables(null, null, tablaDeseada, null);
+        
+        if (!rs.next()) {
+            // La tabla no existe, la creas
+            String createTable = "CREATE TABLE grupo506 (id int primary key, nombre varchar(30), matricula int, carrera varchar(25))";
             System.out.println(createTable);
-            int rs = s.executeUpdate(createTable);
+            int result = s.executeUpdate(createTable);
             cn.close();
-        }catch(Exception e){
-            System.out.println(e);
+            val=true;
+         
+        } else {
+            
+            System.out.println("La tabla " + tablaDeseada + " ya existe.");
+            cn.close();
+            
+            
         }
+    } catch (Exception e) {
+        e.getMessage();
+    }
+        return val;
     
+
     }
 }

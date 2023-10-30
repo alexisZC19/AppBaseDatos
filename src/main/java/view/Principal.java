@@ -23,8 +23,8 @@ public class Principal extends javax.swing.JFrame {
     InsertarController Insertar= new InsertarController();
     EliminarController Eliminar= new EliminarController();
     
-    public int bas;
-    public int tab;
+    public boolean bas;
+    public boolean tab;
     
     
     public Principal() {
@@ -119,7 +119,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void btnCrearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrearMouseClicked
        
-        CrearBase.CrearBase();
+        bas= CrearBase.CrearBase();
         
         
         
@@ -127,19 +127,32 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCrearMouseClicked
 
     private void btnCrearTablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrearTablaMouseClicked
-        CrearTabla.crearTabla();
+        tab=CrearTabla.crearTabla();
     }//GEN-LAST:event_btnCrearTablaMouseClicked
 
     private void btnInsertarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInsertarMouseClicked
-        Insertar.insertar();
+        if(bas==true){
+            if(tab==true){Insertar.insertar();
+            }
+        }
     }//GEN-LAST:event_btnInsertarMouseClicked
 
     private void btnConsultaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultaMouseClicked
-         Consulta.Consulta();
+         
+        if(bas==true){
+            if(tab==true){
+                Consulta.Consulta();
+            }
+        }
     }//GEN-LAST:event_btnConsultaMouseClicked
 
     private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
-        Eliminar.eliminar(); 
+        
+        if(bas==true){
+            if(tab==true){
+                Eliminar.eliminar();
+            }
+        }
     }//GEN-LAST:event_btnEliminarMouseClicked
 
     /**

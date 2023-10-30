@@ -10,6 +10,6 @@ package model;
  */
 public interface CrearBaseInterfaceModel {
     
-    public void CrearBase();
+    public boolean CrearBase();
     
 }
