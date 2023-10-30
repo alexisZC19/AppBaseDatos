@@ -119,7 +119,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void btnCrearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrearMouseClicked
        
-        
+        CrearBase.CrearBase();
         
         
         
@@ -127,19 +127,19 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCrearMouseClicked
 
     private void btnCrearTablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrearTablaMouseClicked
-
+        CrearTabla.crearTabla();
     }//GEN-LAST:event_btnCrearTablaMouseClicked
 
     private void btnInsertarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInsertarMouseClicked
-        
+        Insertar.insertar();
     }//GEN-LAST:event_btnInsertarMouseClicked
 
     private void btnConsultaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultaMouseClicked
-       
+         Consulta.Consulta();
     }//GEN-LAST:event_btnConsultaMouseClicked
 
     private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
-        
+        Eliminar.eliminar(); 
     }//GEN-LAST:event_btnEliminarMouseClicked
 
     /**
